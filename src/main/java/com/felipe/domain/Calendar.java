@@ -28,21 +28,8 @@ public class Calendar {
 
   public List<Appointment> getAppointmentsWithinInterval(LocalDateTime start, LocalDateTime end) {
     return this.getAppointments().stream()
-        .filter(appointment -> isAppointmentWithinInterval(appointment, start, end))
+        .filter(appointment -> appointment.isAppointmentWithinInterval(start, end))
         .sorted(DateUtil::dateComparator)
         .collect(toList());
-  }
-
-  private boolean isAppointmentWithinInterval(
-      Appointment appointment, LocalDateTime start, LocalDateTime end) {
-    return isBeforeOrEqual(appointment, start) && isAfterOrEqual(appointment, end);
-  }
-
-  private boolean isAfterOrEqual(Appointment appointment, LocalDateTime end) {
-    return end.isAfter(appointment.getEnd()) || end.isEqual(appointment.getEnd());
-  }
-
-  private boolean isBeforeOrEqual(Appointment appointment, LocalDateTime start) {
-    return start.isBefore(appointment.getStart()) || start.isEqual(appointment.getStart());
   }
 }

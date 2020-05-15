@@ -16,7 +16,6 @@ import com.felipe.service.collectors.FreeSlotCollector;
 
 @Component
 public class CalendarService {
-
   @Autowired private CalendarCache cache;
 
   public List<TimeSlot> findAvailableTime(

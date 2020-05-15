@@ -28,4 +28,17 @@ public class Appointment {
 
   @JsonProperty("end")
   private LocalDateTime end;
+  
+  public boolean isAppointmentWithinInterval(
+      LocalDateTime start, LocalDateTime end) {
+    return isBeforeOrEqual(this, start) && isAfterOrEqual(this, end);
+  }
+
+  private boolean isAfterOrEqual(Appointment appointment, LocalDateTime end) {
+    return end.isAfter(appointment.getEnd()) || end.isEqual(appointment.getEnd());
+  }
+
+  private boolean isBeforeOrEqual(Appointment appointment, LocalDateTime start) {
+    return start.isBefore(appointment.getStart()) || start.isEqual(appointment.getStart());
+  }
 }
