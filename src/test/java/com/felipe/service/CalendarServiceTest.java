@@ -38,17 +38,15 @@ public class CalendarServiceTest {
   @Before
   public void setup() {
     calendarWithNoAppointments =
-        Calendar.builder().id(calendarIdNoAppointments).appointments(List.of()).build();
+        Calendar.builder().appointments(List.of()).build();
 
     calendarWithAppointmentAt10 =
         Calendar.builder()
-            .id(calendarIdAppointment10)
             .appointments(List.of(createAppointmentAt10(calendarIdAppointment10)))
             .build();
 
     calendarWithTwoAppointments =
         Calendar.builder()
-            .id(calendarIdTwoAppointments)
             .appointments(
                 List.of(
                     createAppointmentAt10(calendarIdTwoAppointments),
@@ -57,13 +55,11 @@ public class CalendarServiceTest {
 
     calendarWithAppointment9h30min =
         Calendar.builder()
-            .id(calendarIdAppointment930to1030)
             .appointments(List.of(createAppointmentAt9h30min(calendarIdAppointment930to1030)))
             .build();
 
     calendarWithWholeDayBusy =
         Calendar.builder()
-            .id(calendarIdWholeDayBusy)
             .appointments(List.of(createAppointmentForTheWholeDay(calendarIdWholeDayBusy)))
             .build();
 
@@ -101,7 +97,6 @@ public class CalendarServiceTest {
     assertTrue(timeSlot3.getStart().equals(LocalDateTime.of(2020, 1, 1, 16, 0)));
     assertTrue(timeSlot3.getEnd().equals(LocalDateTime.of(2020, 1, 1, 17, 0)));
   }
-
   
   @Test
   public void shouldNotFindCommonAgendaDueToTooLongDuration() {
@@ -131,7 +126,7 @@ public class CalendarServiceTest {
 
     calendarService.findAvailableTime(calendars, 60, startPeriod, endPeriod);
   }
-
+  
   private static Appointment createAppointmentAt15(String calendarId) {
     return Appointment.builder()
         .calendarId(calendarId)

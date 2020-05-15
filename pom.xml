@@ -15,19 +15,13 @@
 
 	<properties>
 		<java.version>1.9</java.version>
-		<start-class>com.felipe</start-class>
+		<start-class>com.felipe.MeetingScheduler</start-class>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>one.util</groupId>
-			<artifactId>streamex</artifactId>
-			<version>0.7.2</version>
 		</dependency>
 
 		<dependency>

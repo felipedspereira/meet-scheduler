@@ -3,8 +3,10 @@ package com.felipe.service;
 import static java.util.stream.Collectors.toList;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import com.felipe.dao.CalendarCache;
 import com.felipe.domain.Appointment;
 import com.felipe.domain.Calendar;
@@ -12,6 +14,7 @@ import com.felipe.domain.TimeSlot;
 import com.felipe.service.collectors.CalendarIntersectionCollector;
 import com.felipe.service.collectors.FreeSlotCollector;
 
+@Component
 public class CalendarService {
 
   @Autowired private CalendarCache cache;
@@ -42,7 +45,7 @@ public class CalendarService {
     if (thereIsNoAppointment) {
       TimeSlot wholeIntervalAsFreeSlot =
           TimeSlot.builder().calendarId(calendarId).start(startPeriod).end(endPeriod).build();
-      return List.of(wholeIntervalAsFreeSlot);
+      return new ArrayList<>(List.of(wholeIntervalAsFreeSlot));
     }
 
     FreeSlotCollector collector =
@@ -63,7 +66,7 @@ public class CalendarService {
 
   private List<TimeSlot> calculateCommonAgendaBetweenFreeSlots(List<List<TimeSlot>> freeSlots) {
     List<TimeSlot> firstCalendar = freeSlots.remove(0);
-
+    
     CalendarIntersectionCollector calendarIntersectionCollector =
         CalendarIntersectionCollector.builder().firstCalendar(firstCalendar).build();
 
