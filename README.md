@@ -12,7 +12,7 @@ Considering the two calendars below, where `###` represents an already scheduled
 </pre>
 
 
-The common agenda between them would be:
+The common free slots between them would be:
 * 08:00 - 09:00
 * 11:00 - 13:00
 * 14:00 - 17:00
