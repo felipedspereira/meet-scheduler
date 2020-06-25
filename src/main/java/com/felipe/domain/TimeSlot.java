@@ -39,7 +39,7 @@ public class TimeSlot {
     return timeSlot1.getStart().isBefore(timeSlot2.getEnd())
         && timeSlot2.getStart().isBefore(timeSlot1.getEnd());
   }
-  
+
   public TimeSlot mapIntersection(TimeSlot timeSlot) {
     LocalDateTime start1 = this.getStart();
     LocalDateTime end1 = this.getEnd();
@@ -87,8 +87,7 @@ public class TimeSlot {
 
     if (newTimeSlot == null) {
       throw new IllegalStateException(
-          String.format(
-              "scenario not mapped for this[%s] and timeSlot2[%s]", this, timeSlot));
+          String.format("scenario not mapped for this[%s] and timeSlot2[%s]", this, timeSlot));
     }
 
     return newTimeSlot;

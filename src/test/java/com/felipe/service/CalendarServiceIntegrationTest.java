@@ -1,6 +1,7 @@
 package com.felipe.service;
 
 import static org.junit.Assert.assertTrue;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class CalendarServiceIntegrationTest {
     List<String> calendars = List.of(calendar1, calendar2);
 
     calendarService.findAvailableTime(calendars, 60, startPeriod, endPeriod);
-    
+
     assertTrue(calendars.size() > 0);
   }
 }

@@ -4,6 +4,9 @@ import static java.util.stream.Collector.Characteristics.CONCURRENT;
 import static java.util.stream.Collector.Characteristics.IDENTITY_FINISH;
 import static java.util.stream.Collector.Characteristics.UNORDERED;
 import static java.util.stream.Collectors.toList;
+
+import com.felipe.domain.TimeSlot;
+import com.felipe.exception.NoCommonAgendaException;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +16,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
-import com.felipe.domain.TimeSlot;
-import com.felipe.exception.NoCommonAgendaException;
 import lombok.Builder;
 
 @Builder

@@ -1,5 +1,8 @@
 package com.felipe.dao.dataimporter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.felipe.domain.Calendar;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,9 +13,6 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.felipe.domain.Calendar;
 
 @Repository
 public class JSONDataImporter extends DataImporter<Calendar> {

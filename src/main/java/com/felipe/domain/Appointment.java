@@ -28,9 +28,8 @@ public class Appointment {
 
   @JsonProperty("end")
   private LocalDateTime end;
-  
-  public boolean isAppointmentWithinInterval(
-      LocalDateTime start, LocalDateTime end) {
+
+  public boolean isAppointmentWithinInterval(LocalDateTime start, LocalDateTime end) {
     return isBeforeOrEqual(this, start) && isAfterOrEqual(this, end);
   }
 

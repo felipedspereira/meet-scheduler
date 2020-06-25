@@ -2,6 +2,12 @@ package com.felipe.service;
 
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
+
+import com.felipe.dao.CalendarCache;
+import com.felipe.domain.Appointment;
+import com.felipe.domain.Calendar;
+import com.felipe.domain.TimeSlot;
+import com.felipe.exception.NoCommonAgendaException;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.Before;
@@ -10,11 +16,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import com.felipe.dao.CalendarCache;
-import com.felipe.domain.Appointment;
-import com.felipe.domain.Calendar;
-import com.felipe.domain.TimeSlot;
-import com.felipe.exception.NoCommonAgendaException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CalendarServiceTest {
@@ -37,8 +38,7 @@ public class CalendarServiceTest {
 
   @Before
   public void setup() {
-    calendarWithNoAppointments =
-        Calendar.builder().appointments(List.of()).build();
+    calendarWithNoAppointments = Calendar.builder().appointments(List.of()).build();
 
     calendarWithAppointmentAt10 =
         Calendar.builder()
@@ -97,7 +97,7 @@ public class CalendarServiceTest {
     assertTrue(timeSlot3.getStart().equals(LocalDateTime.of(2020, 1, 1, 16, 0)));
     assertTrue(timeSlot3.getEnd().equals(LocalDateTime.of(2020, 1, 1, 17, 0)));
   }
-  
+
   @Test
   public void shouldNotFindCommonAgendaDueToTooLongDuration() {
     List<String> calendars =
@@ -112,8 +112,7 @@ public class CalendarServiceTest {
 
     assertTrue(freeSlotsByCalendar.size() == 0);
   }
-  
-  
+
   @Test(expected = NoCommonAgendaException.class)
   public void shouldNotFindCommonAgenda() {
     List<String> calendars =
@@ -126,7 +125,7 @@ public class CalendarServiceTest {
 
     calendarService.findAvailableTime(calendars, 60, startPeriod, endPeriod);
   }
-  
+
   private static Appointment createAppointmentAt15(String calendarId) {
     return Appointment.builder()
         .calendarId(calendarId)
