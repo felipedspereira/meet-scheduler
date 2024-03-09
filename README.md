@@ -1,4 +1,4 @@
-# meeting-scheduler
+# meet-scheduler
 Find common agenda across two or more calendars.
 
 Considering the two calendars below, where `###` represents an already scheduled event:
