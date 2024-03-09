@@ -1,7 +1,7 @@
 # meet-scheduler
 Find common agenda across two or more calendars.
 
-Considering the two calendars below, where `###` represents an already scheduled event:
+Considering the two calendars below, where `###` represents a booked period:
 
 <pre>
 <b>Calendar 1</b>
